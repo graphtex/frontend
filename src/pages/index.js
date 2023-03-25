@@ -7,43 +7,51 @@ import { Uploader } from "uploader" // Installed by "react-uploader".
 import { UploadButton } from "react-uploader"
 import React, { useState } from "react"
 
-// Initialize once (at the start of your app).
+/* variables needed for the drag and drop component */
 const uploader = Uploader({
-  apiKey: "free", // Get production API keys from Upload.io
+  apiKey: "free", //
 })
-
-// Configuration options: https://upload.io/uploader#customize
-
 const options = { multi: true }
 
 const inter = Inter({ subsets: ["latin"] })
 
+/* main function */
 export default function Home() {
   const [hasUploaded, setHasUploaded] = useState(false)
+  const [text, setText] = useState("wubbalubadubdub")
 
   return (
     <>
       <Head>
         <title>graphtex</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <main className={styles.main}>
-        <p>Easily create latex diagrams for graphs</p>
-        <p>Upload your image (.png) file here</p>
+        <p>
+          Easily create latex diagrams for graphs. Upload your image (.png) file
+          here
+        </p>
         <div>
           <UploadButton
             uploader={uploader}
             options={options}
             onComplete={function (files) {
               setHasUploaded(true)
-              console.log(files.map((f) => f.fileUrl).join("\n")) // assume only one file is uploaded
+              fetch("http://localhost:5000/", {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: JSON.stringify({ url: files[0] }),
+              })
+                .then((response) => response.json())
+                .then((data) => setText(JSON.stringify(data)))
+                .catch((err) => console.log(err.message))
+              console.log("upload completed")
             }}
           >
-            {({ onClick }) => (
-              <button onClick={onClick}>Upload a file...</button>
-            )}
+            {({ onClick }) => <button onClick={onClick}>Get Started</button>}
           </UploadButton>
         </div>
+        <p>{text}</p>
+
         {hasUploaded ? (
           <div>File has been uploaded</div>
         ) : (
