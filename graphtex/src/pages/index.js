@@ -35,13 +35,14 @@ export default function Home() {
       <main className={styles.main}>
         <h2 style={{marginTop: '-60px'}}>Convert Graph Drawings to TikZ!</h2>
         <p>&nbsp;</p>
-        <UploadButton/>
+        <UploadButton setCode={updateCode}/>
         <p>&nbsp;</p>
         <Box style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '70vh'}}>
           <Ace
             width='700px'
             height='500px'
             fontsize='16px'
+            value = {code}
             updateCode={updateCode}
             justifyContent='center'
           />

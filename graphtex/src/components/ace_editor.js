@@ -23,6 +23,7 @@ const Editor = (props) => {
         fontSize='18px'
         showGutter={false}
         highlightActiveLine={false}
+        value={props.value}
         onChange={props.updateCode}
         name="example"
         editorProps={{ $blockScrolling: true }}
