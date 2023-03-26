@@ -13,11 +13,15 @@ function onChange(newValue) {
 
 const Editor = (props) => {
   return (
-    <Box>
-      <Box id="example"></Box>
+    <Box style={{width:"1100px", height:'600px'}}>
       <AceEditor
+        width='1000px'
+        height='500px'
         mode="latex"
         theme="dracula"
+        fontSize='18px'
+        showGutter={false}
+        highlightActiveLine={false}
         onChange={props.updateCode}
         name="example"
         editorProps={{ $blockScrolling: true }}
