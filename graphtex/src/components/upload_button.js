@@ -8,8 +8,8 @@ const handleFileUpload = (e) => {
   const file = e.target.files[0];
   const { name } = file;
 
-  let data = new FormData()
-  data.append('img', file)
+//  let data = new FormData()
+//  data.append('img', file)
 
   fetch("http://0.0.0.0:5000/", {
       method: "POST",
@@ -17,7 +17,7 @@ const handleFileUpload = (e) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: {'abc': 123}
+      body: file
     })
 };
 
