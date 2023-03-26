@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button, Box } from "@mui/material";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
+
 
 const handleFileUpload = (e, setCode) => {
   if (!e.target.files) {
@@ -29,6 +31,7 @@ const handleFileUpload = (e, setCode) => {
 
 
 export default function UploadButton (props) {
+  const [loading, setLoading] = useState()
   return (
     <Button
       component="label"

@@ -14,13 +14,14 @@ const Ace = dynamic(
   { ssr: false }
 )
 // Configuration options: https://upload.io/uploader#customize
+import CopyButton from '../components/copy_button'
 
 const options = { multi: true }
 
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
-  const [code, setCode] = useState('hello world')
+  const [code, setCode] = useState('Upload an image to translate to tikz!')
 
   const updateCode = code => {
     setCode(code)
@@ -38,6 +39,7 @@ export default function Home() {
         <UploadButton setCode={updateCode}/>
         <p>&nbsp;</p>
         <Box style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '70vh'}}>
+          
           <Ace
             width='700px'
             height='500px'
@@ -46,6 +48,13 @@ export default function Home() {
             updateCode={updateCode}
             justifyContent='center'
           />
+          <Box style={{
+            position: 'relative',
+            top: '-230px',
+            right: '60px'
+          }}>
+            <CopyButton text = {code}/>
+          </Box>
         </Box>
         {/* <p style={{marginTop: '20px'}}>Easily create TikZ diagrams for graphs in LaTeX</p> */}
         {/* <p>Upload your image (.png) file here</p> */}
