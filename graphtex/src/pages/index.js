@@ -33,7 +33,7 @@ export default function Home() {
       </Head>
       <NavBar/>
       <main className={styles.main}>
-        <h2 style={{marginTop: '-60px'}}>Convert Graph Drawings to TikZ!</h2>
+        <h2 style={{marginTop: '-60px', fontFamily: 'Lato'}}>Convert Graph Drawings to TikZ!</h2>
         <p>&nbsp;</p>
         <UploadButton setCode={updateCode}/>
         <p>&nbsp;</p>
@@ -47,8 +47,8 @@ export default function Home() {
             justifyContent='center'
           />
         </Box>
-        <p style={{marginTop: '20px'}}>Easily create TikZ diagrams for graphs in LaTeX</p>
-        <p>Upload your image (.png) file here</p>
+        {/* <p style={{marginTop: '20px'}}>Easily create TikZ diagrams for graphs in LaTeX</p> */}
+        {/* <p>Upload your image (.png) file here</p> */}
       </main>
       <div>
         

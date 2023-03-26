@@ -13,9 +13,10 @@ function onChange(newValue) {
 
 const Editor = (props) => {
   return (
-    <Box style={{width:"1100px", height:'600px',display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-      <AceEditor
-        
+    <Box style={{
+      width:"700px", height:'540px',display: 'flex', justifyContent:'center', alignItems:'center', background:'#282a36', padding:'20px', borderRadius:'25px'
+      }}>
+      <AceEditor 
         width='700px'
         height='500px'
         mode="latex"
