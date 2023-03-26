@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Navbar.module.css';
 import { useState, useEffect } from 'react';
+import Logo from './logo';
 
 export const NavBar = () => {
   /* this state is to show shadow on scroll*/
@@ -15,9 +16,10 @@ export const NavBar = () => {
 
   return (
     <h1
+      style={{height: 120 }}
       className={`${styles.navbar} ${offset === 0 ? '' : styles.show_shadow}`}
     >
-      <span style={{ color: '#087f5b' }}>Graph</span>TeX
+      <Logo/>
     </h1>
   );
 };

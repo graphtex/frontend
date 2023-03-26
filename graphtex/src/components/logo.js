@@ -3,11 +3,9 @@ import styles from '../styles/Navbar.module.css';
 
 export const Logo = () => {
     return (
-      <h1
-        className={`${styles.navbar} ${offset === 0 ? '' : styles.show_shadow}`}
-      >
-        WhenIs<span style={{ color: '#087f5b' }}>Better</span>
-      </h1>
+      <div>
+        <img style={{height: 110 }} src={'logo.png'} />
+      </div>
     );
   };
   

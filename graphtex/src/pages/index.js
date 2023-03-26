@@ -2,6 +2,7 @@ import { useState } from "react"
 import dynamic from 'next/dynamic'
 
 import Head from "next/head"
+import Logo from "../components/logo"
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import styles from "@/styles/Home.module.css"
@@ -27,23 +28,25 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>graphtex</title>
+        <title>GraphTeX</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <NavBar/>
       <main className={styles.main}>
-        <h1>Convert Graph Drawings to Tikz!</h1>
+        <h2 style={{marginTop: '-60px'}}>Convert Graph Drawings to TikZ!</h2>
+        <p>&nbsp;</p>
         <UploadButton/>
-        <Box style={{width:'1600px'}}>
+        <p>&nbsp;</p>
+        <Box style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '70vh'}}>
           <Ace
-            width='1600px'
+            width='700px'
             height='500px'
             fontsize='16px'
             updateCode={updateCode}
-
+            justifyContent='center'
           />
         </Box>
-        <p>Easily create latex diagrams for graphs</p>
+        <p style={{marginTop: '20px'}}>Easily create TikZ diagrams for graphs in LaTeX</p>
         <p>Upload your image (.png) file here</p>
       </main>
       <div>

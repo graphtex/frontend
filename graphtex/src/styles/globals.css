@@ -50,6 +50,10 @@ a {
   margin: 0 auto;
 }
 
+.ace_editor, .ace_editor div {
+  font-family:monospace;
+}
+
 /* 
 Style Choices
 
