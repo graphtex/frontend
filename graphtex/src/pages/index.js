@@ -1,16 +1,17 @@
+import { useState } from "react"
+import dynamic from 'next/dynamic'
+
 import Head from "next/head"
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import styles from "@/styles/Home.module.css"
+import Box from '@mui/material/Box';
 
-import { Uploader } from "uploader" // Installed by "react-uploader".
-import { UploadButton } from "react-uploader"
-
-// Initialize once (at the start of your app).
-const uploader = Uploader({
-  apiKey: "free", // Get production API keys from Upload.io
-})
-
+import UploadButton from '../components/upload_button'
+const Ace = dynamic(
+  () => import("../components/ace_editor"),
+  { ssr: false }
+)
 // Configuration options: https://upload.io/uploader#customize
 
 const options = { multi: true }
@@ -18,6 +19,11 @@ const options = { multi: true }
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
+  const [code, setCode] = useState('hello world')
+
+  const updateCode = code => {
+    setCode(code)
+  }
   return (
     <>
       <Head>
@@ -29,14 +35,14 @@ export default function Home() {
         <p>Upload your image (.png) file here</p>
       </main>
       <div>
-        <UploadButton
-          uploader={uploader}
-          options={options}
-          onComplete={(files) => alert(files.map((x) => x.fileUrl).join("\n"))}
-        >
-          {({ onClick }) => <button onClick={onClick}>Upload a file...</button>}
-        </UploadButton>
+        <UploadButton/>
+        <Box>
+          <Ace
+            updateCode={updateCode}
+          />
+        </Box>
       </div>
+      
     </>
   )
 }
